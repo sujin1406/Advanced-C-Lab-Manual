@@ -302,10 +302,11 @@ int main()
 }
 
     return 0;
+```
 
 Output:
 
-Advanced-C-Lab-Manual/ac.10.4.png
+![alt text](ac.10.4.png)
 
 
 Result:
@@ -399,32 +400,29 @@ void display(struct Node *node) {
 
 int main() {
     struct Node *head = NULL;
-
     insert(&head, 'L');
     insert(&head, 'M');
     insert(&head, 'S');
-
     printf("Original List: ");
     display(head);
-
     deleteNode(&head, 'M');
     printf("After Deletion: ");
     display(head);
-
     struct Node *temp;
     while (head != NULL) {
         temp = head;
         head = head->next;
         free(temp);
     }
-
     return 0;
 }
 ```
 
+
+
 Output:
 
-Advanced-C-Lab-Manual/ac.10.5.png
+![alt text](ac.10.5.png)
 
 
 
