@@ -1,5 +1,3 @@
-
-
 EXP NO:21 C PROGRAM TO CREATE A FUNCTION TO FIND THE GREATEST NUMBER
 Aim:
 To write a C program to create a function to find the greatest number
@@ -12,10 +10,37 @@ Algorithm:
 5.	Call the max_of_four function with the input integers and store the result in the greater variable
  
 Program:
-//type your code here
+```
+#include <stdio.h>
+
+int max_of_four(int n1, int n2, int n3, int n4) {
+    if (n1 >= n2 && n1 >= n3 && n1 >= n4) {
+        return n1;
+    } else if (n2 >= n1 && n2 >= n3 && n2 >= n4) {
+        return n2;
+    } else if (n3 >= n1 && n3 >= n2 && n3 >= n4) {
+        return n3;
+    } else {
+        return n4;
+    }
+}
+
+int main() {
+    int n1, n2, n3, n4, greater;
+
+    printf("Enter four integers: ");
+    scanf("%d %d %d %d", &n1, &n2, &n3, &n4);
+
+    greater = max_of_four(n1, n2, n3, n4);
+
+    printf("The greatest number is: %d\n", greater);
+
+    return 0;
+}
+```
 
 Output:
-//paste your output here
+![alt text](ac.11.1.png)
 
 Result:
 Thus, the program  that create a function to find the greatest number is verified successfully.
@@ -36,10 +61,47 @@ Algorithm:
 7.	Call the calculate_the_max function with input values.
  
 Program:
-//type your code here
+```
+#include <stdio.h>
+
+void calculate_the_max(int n, int k) {
+    int a = 0, o = 0, x = 0;
+    int i, j;
+
+    for (i = 1; i <= n; i++) {
+        for (j = i + 1; j <= n; j++) {
+            int current_and = i & j;
+            int current_or = i | j;
+            int current_xor = i ^ j;
+
+            if (current_and < k && current_and > a) {
+                a = current_and;
+            }
+            if (current_or < k && current_or > o) {
+                o = current_or;
+            }
+            if (current_xor < k && current_xor > x) {
+                x = current_xor;
+            }
+        }
+    }
+
+    printf("%d\n%d\n%d\n", a, o, x);
+}
+
+int main() {
+    int n, k;
+
+    scanf("%d %d", &n, &k);
+
+    calculate_the_max(n, k);
+
+    return 0;
+}
+```
 
 Output:
-//paste your output here
+![alt text](ac.11.2.png)
 
 Result:
 Thus, the program to print the maximum values for the AND, OR and XOR comparisons
@@ -59,10 +121,57 @@ Algorithm:
 5.	Use a for loop to iterate over the queries.
  
 Program:
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int noshel, noque;
+    int k = 0;
+    int c = 0;
+
+    scanf("%d %d", &noshel, &noque);
+
+    int **shelarr = (int **)malloc(noshel * sizeof(int *));
+    int *nobookarr = (int *)malloc(noshel * sizeof(int));
+
+    for (int i = 0; i < noshel; i++) {
+        shelarr[i] = (int *)malloc(1100 * sizeof(int));
+        nobookarr[i] = 0;
+    }
+
+    for (int i = 0; i < noque; i++) {
+        int type;
+        scanf("%d", &type);
+
+        if (type == 1) {
+            int x, y;
+            scanf("%d %d", &x, &y);
+            shelarr[x][nobookarr[x]] = y;
+            nobookarr[x]++;
+        } else if (type == 2) {
+            int x, y;
+            scanf("%d %d", &x, &y);
+            printf("%d\n", shelarr[x][y]);
+        } else if (type == 3) {
+            int x;
+            scanf("%d", &x);
+            printf("%d\n", nobookarr[x]);
+        }
+    }
+
+    for (int i = 0; i < noshel; i++) {
+        free(shelarr[i]);
+    }
+    free(shelarr);
+    free(nobookarr);
+
+    return 0;
+}
+```
 
 Output:
-//paste your output here
+![alt text](ac.11.3.png)
 
 
 Result:
@@ -86,10 +195,38 @@ Algorithm:
 
 
 Program:
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n;
+    int sum = 0;
+    int i;
+
+    scanf("%d", &n);
+
+    int *a = (int *)malloc(n * sizeof(int));
+
+    if (a == NULL) {
+        return 1;
+    }
+
+    for (i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+        sum = sum + a[i];
+    }
+
+    printf("%d\n", sum);
+
+    free(a);
+
+    return 0;
+}
+```
 
 Output:
-//paste your output here
+![alt text](ac.11.4.png)
 
  
 
@@ -120,10 +257,37 @@ o	If a character is not a space, it may belong to a word. If it's the first non-
 
 
 Program:
-//type your code here
+```
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char sentence[200];
+    int count = 0;
+    int i = 0;
+    int in_word = 0;
+
+    fgets(sentence, sizeof(sentence), stdin);
+
+    while (sentence[i] != '\0') {
+        if (isspace(sentence[i]) || ispunct(sentence[i])) {
+            in_word = 0;
+        } else if (in_word == 0) {
+            in_word = 1;
+            count++;
+        }
+        i++;
+    }
+
+    printf("%d\n", count);
+
+    return 0;
+}
+```
 
 Output:
-//paste your output here
+![alt text](ac.11.5.png)
 
 
 

@@ -13,11 +13,43 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+#define MAX 5
+
+int stack[MAX], top = -1;
+
+void push(int x) {
+    if(top == MAX - 1)
+        printf("Stack Overflow\n");
+    else
+        stack[++top] = x;
+}
+
+void display() {
+    if(top == -1)
+        printf("Stack is Empty\n");
+    else {
+        for(int i = top; i >= 0; i--)
+            printf("%d ", stack[i]);
+    }
+}
+
+int main() {
+    push(10);
+    push(20);
+    push(30);
+
+    printf("Stack elements:\n");
+    display();
+
+    return 0;
+}
+```
 
 Output:
-
-//paste your output here
+![alt text](ac.9.1.png)
 
 
 
@@ -36,11 +68,44 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int max_size = 10;
+int top = -1;
+float *stack;
+
+void push(float value) {
+    if (top >= max_size - 1) {
+        printf("Stack Overflow\n");
+    } else {
+        top++;
+        stack[top] = value;
+        printf("Pushed: %.2f\n", value);
+    }
+}
+
+int main() {
+    stack = (float *)malloc(max_size * sizeof(float));
+
+    if (stack == NULL) {
+        return 1;
+    }
+
+    push(10.5);
+    push(20.75);
+    push(30.12);
+
+    free(stack);
+
+    return 0;
+}
+```
 
 Output:
 
-//paste your output here
+![alt text](ac.9.2.png)
 
 
 
@@ -61,12 +126,47 @@ Algorithm:
 4.	Call the display function and perform other queue operations as needed.
  
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+
+int queue[5];
+int front = 0;
+int rear = -1;
+int i;
+
+void display() {
+    if (front > rear) {
+        printf("Queue is Empty\n");
+    } else {
+        printf("Queue elements: ");
+        for (i = front; i <= rear; i++) {
+            printf("%d ", queue[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    rear++;
+    queue[rear] = 10;
+    
+    rear++;
+    queue[rear] = 20;
+    
+    rear++;
+    queue[rear] = 30;
+
+    display();
+
+    return 0;
+}
+```
 
 Output:
 
-//paste your output here
+![alt text](ac.9.3.png)
 
 
 Result:
@@ -86,11 +186,47 @@ Algorithm:
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
 
+int size = 5;
+int front = -1;
+int rear = -1;
+float *queue;
+
+void enqueue(float value) {
+    if (rear == size - 1) {
+        printf("Queue Overflow! Cannot insert %.2f\n", value);
+    } else {
+        if (front == -1) {
+            front = 0;
+        }
+        rear++;
+        queue[rear] = value;
+        printf("Inserted %.2f into the queue\n", value);
+    }
+}
+
+int main() {
+    queue = (float *)malloc(size * sizeof(float));
+
+    if (queue == NULL) {
+        return 1;
+    }
+
+    enqueue(10.55);
+    enqueue(20.40);
+    enqueue(30.12);
+
+    free(queue);
+
+    return 0;
+}
+```
 Output:
 
-//paste your output here
+![alt text](ac.9.4.png)
 
 Result:
 Thus, the program to insert elements in queue using array is verified successfully.
@@ -120,12 +256,66 @@ o	After deletion, check if the front pointer has passed the rear pointer (front 
 
 
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+int size = 5;
+int front = -1;
+int rear = -1;
+float *queue;
+
+void dequeue() {
+    if (front == -1) {
+        printf("Queue is Empty, no elements to delete\n");
+    } else {
+        float deleted_element = queue[front];
+        printf("Deleted: %.2f\n", deleted_element);
+        front++;
+        
+        if (front > rear) {
+            front = -1;
+            rear = -1;
+        }
+    }
+}
+
+void enqueue(float value) {
+    if (rear == size - 1) {
+        printf("Queue Overflow\n");
+    } else {
+        if (front == -1) {
+            front = 0;
+        }
+        rear++;
+        queue[rear] = value;
+    }
+}
+
+int main() {
+    queue = (float *)malloc(size * sizeof(float));
+
+    if (queue == NULL) {
+        return 1;
+    }
+
+    enqueue(15.55);
+    enqueue(25.40);
+
+    dequeue();
+    dequeue();
+    dequeue();
+
+    free(queue);
+
+    return 0;
+}
+```
+
 
 Output:
 
-//paste your output here
+![alt text](ac.9.5.png)
 
 
 Result:

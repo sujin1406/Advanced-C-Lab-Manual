@@ -16,15 +16,56 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter a number (5 to 13): ");
+    scanf("%d", &n);
+    switch(n) {
+        case 5:
+            printf("seventy one");
+            break;
+        case 6:
+            printf("seventy two");
+            break;
+        case 7:
+            printf("seventy three");
+            break;
+        case 8:
+            printf("seventy four");
+            break;
+        case 9:
+            printf("seventy five");
+            break;
+        case 10:
+            printf("seventy six");
+            break;
+        case 11:
+            printf("seventy seven");
+            break;
+        case 12:
+            printf("seventy eight");
+            break;
+        case 13:
+            printf("seventy nine");
+            break;
+        default:
+            printf("Greater than 13 or invalid input");
+    }
+
+    return 0;
+}
+```
 
 
 
 
 Output:
 
+![alt text](ac.8.1.png)
 
-//paste your output here
 
 
 
@@ -46,8 +87,29 @@ Algorithm:
 6.	End
  
 Program:
+```
+#include <stdio.h>
+#include <string.h>
 
-//type your code here
+int main() {
+    char a[50];
+    int i, c, d;
+    printf("ENETER :");
+
+    scanf("%s", a);
+
+    for(d = 0; d <= 3; d++) {
+        c = 0;
+        for(i = 0; i < strlen(a); i++) {
+            if(a[i] == d + '0')
+                c++;
+        }
+        printf("%d ", c);
+    }
+
+    return 0;
+}
+```
 
 
 
@@ -55,7 +117,7 @@ Program:
 Output:
 
 
-//paste your output here
+![alt text](ac.8.2.png)
 
 
 
@@ -84,20 +146,45 @@ Free the memory allocated for each string in s Free the memory allocated for s
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <string.h>
 
+void swap(char *a, char *b){
+    char t=*a; *a=*b; *b=t;
+}
+
+void sort(char s[]){
+    int i,j;
+    for(i=0;s[i];i++)
+        for(j=i+1;s[j];j++)
+            if(s[i]>s[j]) swap(&s[i],&s[j]);
+}
+
+void perm(char s[], int l, int r){
+    if(l==r) printf("%s\n",s);
+    else{
+        for(int i=l;i<=r;i++){
+            swap(&s[l],&s[i]);
+            perm(s,l+1,r);
+            swap(&s[l],&s[i]);
+        }
+    }
+}
+
+int main(){
+    char s[20];
+    scanf("%s",s);
+    sort(s);
+    perm(s,0,strlen(s)-1);
+}
+```
 
 
 
 Output:
 
-
-//paste your output here
-
-
-
-
-
+![alt text](ac.8.3.png)
 
 Result:
 Thus, the program is verified successfully
@@ -117,15 +204,38 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int main() {
+    int n, i, j, min, len;
+
+    scanf("%d", &n);
+
+    len = 2 * n - 1;
+
+    for(i = 0; i < len; i++) {
+        for(j = 0; j < len; j++) {
+            min = i < j ? i : j;
+            min = min < (len - i - 1) ? min : (len - i - 1);
+            min = min < (len - j - 1) ? min : (len - j - 1);
+
+            printf("%d ", n - min);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+```
 
 
 
 
 Output:
 
+![alt text](ac.8.4.png)
 
-//paste your output here
 
 
 
@@ -156,7 +266,22 @@ o	Call the square() function and display the result.
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+
+int square() {
+    int n;
+    scanf("%d", &n);
+    return n * n;
+}
+
+int main() {
+    int result;
+    result = square();
+    printf("%d", result);
+    return 0;
+}
+```
 
 
 
@@ -164,7 +289,7 @@ Program:
 Output:
 
 
-//paste your output here
+![alt text](ac.8.5.png)
 
 
 
